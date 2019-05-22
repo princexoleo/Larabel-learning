@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('contact', function () {
-    return view('contact');
-});
-
-Route::get('about', function () {
-    return view('about');
-});
+//here is another way to url mapping with the help of view method
+//view methood contains URL and corresponding Blade file
+Route::view('contact', 'contact');
+Route::view('about','about');
