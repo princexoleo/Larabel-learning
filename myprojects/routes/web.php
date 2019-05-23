@@ -22,5 +22,12 @@ Route::view('contact', 'contact');
 Route::view('about','about');
 
 Route::get('customers', function(){
-    return view('customers');
+    $customers =[
+        'Jhon Doe',
+        'Bob The Builder',
+        'Mazharul Islam Leon',
+    ];
+    return view('internals.customers',[
+        'customers'=>$customers,
+    ]);  //you can also user internals/customers
 });
