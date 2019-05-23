@@ -20,3 +20,7 @@ Route::get('/', function () {
 //view methood contains URL and corresponding Blade file
 Route::view('contact', 'contact');
 Route::view('about','about');
+
+Route::get('customers', function(){
+    return view('customers');
+});
