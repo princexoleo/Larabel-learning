@@ -17,4 +17,16 @@ class CustomerController extends Controller
             'customers'=>$customers,
         ]);
     }
+
+    //
+    public function store(){
+        //get name from input-form
+
+        $customer = new Customer();
+        $customer->name = request('name');
+        $customer->save();
+
+        return back();
+       
+    }
 }

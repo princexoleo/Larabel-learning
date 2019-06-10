@@ -22,3 +22,5 @@ Route::view('contact', 'contact');
 Route::view('about','about');
 
 Route::get('customers','CustomerController@list'); // we can also this syntax to passing data with the help of controller
+
+Route::post('customers','CustomerController@store'); //store new customers details to database
