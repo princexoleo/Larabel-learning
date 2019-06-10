@@ -1,2 +1,2 @@
-# Larabel-learning 
+# Laravel-learning 
 - version 5.8
