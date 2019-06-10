@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -9,12 +10,9 @@ class CustomerController extends Controller
     //
     public function list()
     {
-        $customers =[
-            'Jhon Doe',
-            'Bob The Builder',
-            'Mazharul Islam Leon',
-            'Another Name ',
-        ];
+        $customers = Customer::all();
+       
+
         return view('internals.customers',[
             'customers'=>$customers,
         ]);
