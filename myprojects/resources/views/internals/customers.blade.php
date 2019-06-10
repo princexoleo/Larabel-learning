@@ -12,10 +12,15 @@
         <div class="input-group">
             <input type="text" name="name">
         </div>
+
+        {{ $errors->first('name') }}
+        <br>
         <button type="submit">Add Customer</button>
 
         @csrf
     </form>
+
+ 
 
     <ui>
         @foreach ($customers as $customer) <!-- blade syntax -->

@@ -22,6 +22,10 @@ class CustomerController extends Controller
     public function store(){
         //get name from input-form
 
+        $data = request()->validate([
+            'name' =>'required|min:3'  //we need minimum 3 character name
+        ]);
+
         $customer = new Customer();
         $customer->name = request('name');
         $customer->save();
