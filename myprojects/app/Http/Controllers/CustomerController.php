@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Customer;
 use Illuminate\Http\Request;
 
@@ -12,10 +13,10 @@ class CustomerController extends Controller
     {
         $activeCustomers = Customer::active()->get(); //get active customers form database by checking their active column
         $inactiveCustomers = Customer::inactive()->get();
-
+        $companies = Company::all();
        // $customers = Customer::all();
 
-       return view('internals.customers', compact('activeCustomers','inactiveCustomers')); //another option of passing data to view
+       return view('internals.customers', compact('activeCustomers','inactiveCustomers','companies')); //another option of passing data to view
        
 
         // return view('internals.customers',[
@@ -31,7 +32,8 @@ class CustomerController extends Controller
         $data = request()->validate([
             'name' =>'required|min:3',  //we need minimum 3 character name
             'email' =>'required|email', //we need need email and also a valid email
-            'active' =>'required'
+            'active' =>'required',
+            'company_id'=>'required',
         ]);
 
         // to more secure we need to verify all data comes from input form

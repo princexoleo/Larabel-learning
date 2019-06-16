@@ -25,4 +25,10 @@ class Customer extends Model
     {
         return $query->where('active',0); //eloquent scope
     }
+
+    //
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }
