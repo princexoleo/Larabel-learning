@@ -10,8 +10,8 @@ class CustomerController extends Controller
     //
     public function list()
     {
-        $activeCustomers = Customer::where('active',1)->get(); //get active customers form database by checking their active column
-        $inactiveCustomers = Customer::where('active',0)->get();
+        $activeCustomers = Customer::active()->get(); //get active customers form database by checking their active column
+        $inactiveCustomers = Customer::inactive()->get();
 
        // $customers = Customer::all();
 
@@ -34,11 +34,23 @@ class CustomerController extends Controller
             'active' =>'required'
         ]);
 
-        $customer = new Customer(); // create a object of customer database
-        $customer->name = request('name'); // add customer name to databse
-        $customer->email = request('email'); // add email to databse
-        $customer->active = request('active'); // geta ctive status value from input form 
-        $customer->save(); //save to database
+        // to more secure we need to verify all data comes from input form
+        // if any user add a html input form and send data , it will be harmful for databse
+        // thats why we need to validate every data comes from User input form 
+        // before insert that data to our database 
+
+
+       // $customer = Customer::create($data);
+
+        //$customer = new Customer(); // create a object of customer database
+        // $customer->name = request('name'); // add customer name to databse
+        // $customer->email = request('email'); // add email to databse
+        // $customer->active = request('active'); // geta ctive status value from input form 
+        // $customer->save(); //save to database
+
+        //mass assignments can be happen
+        Customer::create($data); 
+
 
         return back(); //back to the previous function
        
