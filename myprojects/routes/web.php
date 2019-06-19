@@ -21,6 +21,6 @@ Route::get('/', function () {
 Route::view('contact', 'contact');
 Route::view('about','about');
 
-Route::get('customers','CustomerController@list'); // we can also this syntax to passing data with the help of controller
-
+Route::get('customers/','CustomerController@index'); // we can also this syntax to passing data with the help of controller
+Route::get('customers/create','CustomerController@create');
 Route::post('customers','CustomerController@store'); //store new customers details to database

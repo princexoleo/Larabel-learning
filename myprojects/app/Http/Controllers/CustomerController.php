@@ -9,20 +9,27 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     //
-    public function list()
+    public function index()
     {
-        $activeCustomers = Customer::active()->get(); //get active customers form database by checking their active column
-        $inactiveCustomers = Customer::inactive()->get();
-        $companies = Company::all();
-       // $customers = Customer::all();
+        // $activeCustomers = Customer::active()->get(); //get active customers form database by checking their active column
+        // $inactiveCustomers = Customer::inactive()->get();
+       
+        $customers = Customer::all();
 
-       return view('internals.customers', compact('activeCustomers','inactiveCustomers','companies')); //another option of passing data to view
+       return view('customers.index', compact('customers')); //another option of passing data to view
        
 
         // return view('internals.customers',[
         //     'activeCustomers'=>$activeCustomer,//send Active customers details to view
         //     'inactiveCustomers' => $inactiveCustomer, //send inActive customers details to view
         // ]);
+    }
+
+    //create function
+    public function create()
+    {
+        $companies = Company::all();
+        return view('customers.create',compact('companies'));
     }
 
     //
@@ -54,7 +61,7 @@ class CustomerController extends Controller
         Customer::create($data); 
 
 
-        return back(); //back to the previous function
+        return redirect('customers'); //back to the previous function
        
     }
 }

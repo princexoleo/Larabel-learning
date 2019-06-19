@@ -13,6 +13,14 @@ class Customer extends Model
    //solution two
    protected $guarded = [];
 
+   //
+   public function getActiveAttributive($atrribute)
+   {
+       return [
+           0 =>'Inactive',
+           1 =>'Active,'
+       ][$atrribute];
+   }
 
     // as many we want we cn implements scope but one thing to remmeber that structure should be maintain strictly
 
