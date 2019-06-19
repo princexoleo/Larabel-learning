@@ -64,4 +64,16 @@ class CustomerController extends Controller
         return redirect('customers'); //back to the previous function
        
     }
+
+    //show funtion  this $customer name need to ewual with url variable
+    public function show(Customer $customer) //Route model Binding. laravel fetch automaticallu if not found then show 404 not found 
+    {
+       //dd($customer);
+       //$customer = Customer::find($customer); //collect data from Customer model with the help of cutomerID
+       //if invalid input given so  to this avoid we use
+    //   $customer = Customer::where('id', $customer)->firstOrFail(); 
+
+       return view('customers.show', compact('customer'));
+
+    }
 }
