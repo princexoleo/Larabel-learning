@@ -25,3 +25,5 @@ Route::get('customers/','CustomerController@index'); // we can also this syntax 
 Route::get('customers/create','CustomerController@create');
 Route::post('customers','CustomerController@store'); //store new customers details to database
 Route::get('customers/{customer}','CustomerController@show'); //pass value via parameter 
+Route::patch('customers/{customer}','CustomerController@update'); 
+Route::get('customers/{customer}/edit','CustomerController@edit');

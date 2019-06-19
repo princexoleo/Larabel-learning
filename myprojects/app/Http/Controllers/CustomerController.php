@@ -76,4 +76,23 @@ class CustomerController extends Controller
        return view('customers.show', compact('customer'));
 
     }
+
+    //edit
+    public function edit(Customer $customer)
+    {
+        $companies = Company::all();
+        return view('customers.edit', compact('customer','companies'));
+    }
+    //update
+    public function update(Customer $customer)
+    {
+        $data = request()->validate([
+            'name' =>'required|min:3',  //we need minimum 3 character name
+            'email' =>'required|email', //we need need email and also a valid email
+        ]);
+
+        $customer->update($data);
+
+        return redirect('customers/'. $customer->id);
+    }
 }
