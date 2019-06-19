@@ -29,7 +29,8 @@ class CustomerController extends Controller
     public function create()
     {
         $companies = Company::all();
-        return view('customers.create',compact('companies'));
+        $customer = new Customer();
+        return view('customers.create',compact('companies','customer'));
     }
 
     //
@@ -89,6 +90,8 @@ class CustomerController extends Controller
         $data = request()->validate([
             'name' =>'required|min:3',  //we need minimum 3 character name
             'email' =>'required|email', //we need need email and also a valid email
+            'active' =>'required',
+            'company_id'=>'required',
         ]);
 
         $customer->update($data);
